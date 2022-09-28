@@ -7,7 +7,7 @@ import { Movement } from '../model/movement';
   providedIn: 'root'
 })
 export class MovementService {
-  URL_SERVICES = 'http://localhost:8080'
+    URL_SERVICES = 'https://54.213.89.252:8080'
   private urlBase = this.URL_SERVICES + "/api";
   private httpHeaders = new HttpHeaders({'Content-type' : 'application/json'});
 
