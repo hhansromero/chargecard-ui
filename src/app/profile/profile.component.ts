@@ -12,10 +12,14 @@ export class ProfileComponent implements OnInit {
   user: User = new User();
 
   constructor(private userService: UserService, private router: Router) {
-    this.userService.getUserByUserId(5).subscribe(user => this.user = user);
+
   }
 
   ngOnInit(): void {
+    this.userService.getUserByUserId(5).subscribe(user => {
+          this.user = user
+        }
+    );
   }
 
   save() {

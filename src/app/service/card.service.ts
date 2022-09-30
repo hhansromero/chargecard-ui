@@ -13,7 +13,6 @@ export class CardService {
 
   constructor(private http: HttpClient) { }
 
-  // here we will use a path variable on the route => passengerId
   getCardsByPassenger(passengerId: number) : Observable<any> {
     return this.http.get(this.urlBase + '/cards/by-passenger/' + passengerId).pipe(
         map(response => response as Card[]),
