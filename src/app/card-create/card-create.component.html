@@ -4,7 +4,8 @@
     <div class="card border-dark mb-3">
       <mat-form-field appearance="fill">
         <mat-label>Ingrese el número de la tarjeta</mat-label>
-        <input matInput [(ngModel)]="card.number">
+        <input matInput #inputCardNumber maxlength="16" placeholder="Ex. 4444111122229999" [(ngModel)]="card.number">
+        <mat-hint align="end">{{inputCardNumber.value?.length || 0}}/16</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Ingrese la expiración de la tarjeta</mat-label>
@@ -12,7 +13,8 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Ingrese el CVV de la tarjeta</mat-label>
-        <input matInput [(ngModel)]="card.cvv">
+        <input matInput #inputCVV maxlength="3" placeholder="Ex. 765" [(ngModel)]="card.cvv">
+        <mat-hint align="end">{{inputCVV.value?.length || 0}}/3</mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Ingrese el nombre completo (como aparece en la tarjeta)</mat-label>
