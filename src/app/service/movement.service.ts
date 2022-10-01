@@ -28,7 +28,16 @@ export class MovementService {
   }
 
   createMovement(movement: Object) : Observable<Object> {
-    return this.http.post(this.urlBase + '/movements', movement, { headers: this.httpHeaders });
+    return this.http.post(this.urlBase + '/movements', movement, { headers: this.httpHeaders }).pipe(
+        catchError(e => {
+            alert(e.status+ ": " + e.error.message)
+            return throwError(() => {
+                const error: any = new Error(e.error.message);
+                error.timestamp = Date.now();
+                return error;
+            });
+        })
+    );
   }
 
 }

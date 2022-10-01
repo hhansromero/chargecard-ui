@@ -28,6 +28,15 @@ export class UserService {
   }
 
   updateUser(user: Object) : Observable<Object> {
-    return this.http.put(this.urlBase + '/users/5', user, { headers: this.httpHeaders });
+    return this.http.put(this.urlBase + '/users/5', user, { headers: this.httpHeaders }).pipe(
+        catchError(e => {
+          alert(e.status+ ": " + e.error.message)
+          return throwError(() => {
+            const error: any = new Error(e.error.message);
+            error.timestamp = Date.now();
+            return error;
+          });
+        })
+    );
   }
 }
