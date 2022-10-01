@@ -14,25 +14,32 @@
         <mat-label>Nombre Completo</mat-label>
         <input matInput [(ngModel)]="user.passenger.name">
       </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Nro de DNI</mat-label>
-        <input matInput [(ngModel)]="user.passenger.dni" readonly>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
+      <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput [(ngModel)]="user.passenger.email">
+        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+               placeholder="Ex. pat@example.com" [(ngModel)]="user.passenger.email">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Por favor, ingrese un email válido
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email es <strong>requerido</strong>
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Teléfono</mat-label>
         <input matInput [(ngModel)]="user.passenger.phone">
       </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Nro de Lima Pass</mat-label>
-        <input matInput [(ngModel)]="user.metroCard.number" readonly>
+      <mat-form-field appearance="outline" class="mat-form-field-readonly">
+        <mat-label class="control-label text-dark">Nro de DNI</mat-label>
+        <input matInput type="text" [readonly]="true" [(ngModel)]="user.passenger.dni"/>
       </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Saldo Actual</mat-label>
-        <input matInput [(ngModel)]="user.metroCard.currentBalance" readonly>
+      <mat-form-field appearance="outline" class="mat-form-field-readonly">
+        <mat-label class="control-label text-dark">Nro de Lima Pass</mat-label>
+        <input matInput type="text" [readonly]="true" [(ngModel)]="user.metroCard.number"/>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mat-form-field-readonly">
+        <mat-label class="control-label text-dark">Saldo Actual</mat-label>
+        <input matInput type="text" [readonly]="true" [(ngModel)]="user.metroCard.currentBalance"/>
       </mat-form-field>
       <section>
         <div class="example-button-row">
@@ -40,7 +47,6 @@
           <button mat-raised-button routerLink="/home">Cancelar</button>
         </div>
       </section>
-
     </div>
   </div>
 </div>
