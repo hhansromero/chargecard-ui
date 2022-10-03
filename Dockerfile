@@ -14,4 +14,4 @@ RUN npm run build --prod
 #Segunda Etapa
 FROM nginx:1.17.1-alpine
 
-COPY --from=build-step /app/dist/chargecard-ui /usr/share/nginx/html
+COPY --from=build-step /app/dist/app-hector-romero /usr/share/nginx/html
