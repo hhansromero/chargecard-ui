@@ -1,0 +1,35 @@
+<div class="card bg-light w-75 mx-auto">
+  <div class="card-header">HAZ UNA RECARGA</div>
+  <div class="card-body">
+    <div class="card border-dark mb-3">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Ingrese el monto a recargar</mat-label>
+        <input matInput [(ngModel)]="movement.amount">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Tipo de Movimiento</mat-label>
+        <mat-select [(ngModel)]="movement.movementType">
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Método de Pago</mat-label>
+        <mat-select [(ngModel)]="movement.cardId">
+          <mat-option *ngFor="let food of cards" [value]="food.id">
+            {{food.number}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <section>
+        <div class="example-button-row">
+          <button mat-raised-button (click)="save()">Recargar</button>
+          <button mat-raised-button routerLink="/home">Cancelar</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
